@@ -1,6 +1,7 @@
 package com.example.demo.query;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.example.demo.domain.SampleRequest;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,7 +15,13 @@ public class Query implements GraphQLQueryResolver {
         return "Second Query";
     }
 
+    /*
     public String fullName(String firstName, String lastName) {
         return firstName + " " + lastName;
+    }
+    */
+
+    public String fullName(SampleRequest sampleRequest){
+        return sampleRequest.getFirstName() + " " + sampleRequest.getLastName();
     }
 }

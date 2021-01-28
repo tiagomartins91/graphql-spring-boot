@@ -1,5 +1,11 @@
 type Query {
     firstQuery: String
     secondQuery: String
-    fullName(firstName: String, lastName: String): String
+    #fullName(firstName: String, lastName: String): String
+    fullName(sampleRequest: SampleRequest): String
+}
+
+input SampleRequest {
+    firstName: String
+    lastName: String
 }
