@@ -18,4 +18,12 @@ type StudentDTO {
     email: String
     street: String
     city: String
+    learningSubjects : [SubjetDTO]
 }
+
+type SubjetDTO {
+    id: Long
+    subjectName: String
+    marksObtained: Float
+}
+
