@@ -3,9 +3,19 @@ type Query {
     secondQuery: String
     #fullName(firstName: String, lastName: String): String
     fullName(sampleRequest: SampleRequest): String
+    student(id: Long): StudentDTO
 }
 
 input SampleRequest {
     firstName: String!
     lastName: String
+}
+
+type StudentDTO {
+    id: Long
+    firstName: String
+    lastName: String
+    email: String
+    street: String
+    city: String
 }
