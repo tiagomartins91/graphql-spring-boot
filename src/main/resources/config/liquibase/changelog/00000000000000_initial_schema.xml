@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet id="00000000000001" author="demo">
+        <createTable tableName="student">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="address_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="address">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="street" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="city" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+
+        <createTable tableName="subject">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="subject_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="marks_obtained" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="student_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="00000000000002" author="demo">
+
+        <addForeignKeyConstraint baseColumnNames="address_id"
+                                 baseTableName="student"
+                                 constraintName="fk_student_address_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="address"/>
+
+        <addForeignKeyConstraint baseColumnNames="student_id"
+                                 baseTableName="subject"
+                                 constraintName="fk_subject_student_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="student"/>
+
+    </changeSet>
+</databaseChangeLog>
