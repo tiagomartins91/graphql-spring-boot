@@ -45,7 +45,7 @@
             <column name="subject_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="marks_obtained" type="varchar(255)">
+            <column name="marks_obtained" type="decimal">
                 <constraints nullable="true" />
             </column>
             <column name="student_id" type="bigint">
@@ -55,7 +55,6 @@
     </changeSet>
 
     <changeSet id="00000000000002" author="demo">
-
         <addForeignKeyConstraint baseColumnNames="address_id"
                                  baseTableName="student"
                                  constraintName="fk_student_address_id"
@@ -67,6 +66,29 @@
                                  constraintName="fk_subject_student_id"
                                  referencedColumnNames="id"
                                  referencedTableName="student"/>
+    </changeSet>
 
+    <!-- Load Dummy Data -->
+    <changeSet id="01-dummy-data" author="demo">
+        <loadData file="config/liquibase/data/address.csv" separator=";" tableName="address">
+            <column name="id" type="numeric"/>
+            <column name="street" type="string"/>
+            <column name="city" type="string"/>
+        </loadData>
+
+        <loadData file="config/liquibase/data/student.csv" separator=";" tableName="student">
+            <column name="id" type="numeric"/>
+            <column name="first_name" type="string"/>
+            <column name="last_name" type="string"/>
+            <column name="email" type="string"/>
+            <column name="address_id" type="numeric"/>
+        </loadData>
+
+        <loadData file="config/liquibase/data/subject.csv" separator=";" tableName="subject">
+            <column name="id" type="numeric"/>
+            <column name="subject_name" type="string"/>
+            <column name="marks_obtained" type="numeric"/>
+            <column name="student_id" type="numeric"/>
+        </loadData>
     </changeSet>
 </databaseChangeLog>
