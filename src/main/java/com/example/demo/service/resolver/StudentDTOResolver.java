@@ -26,4 +26,8 @@ public class StudentDTOResolver implements GraphQLResolver<StudentDTO> {
 
         return learningSubjects;
     }
+
+    public  String getFullName(StudentDTO studentDTO){
+        return  studentDTO.getFirstName() + " " + studentDTO.getLastName();
+    }
 }

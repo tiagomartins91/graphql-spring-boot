@@ -26,6 +26,8 @@ public class StudentDTO {
 
 	// this is for internal use, do not put in schema
 	private Student student;
+
+	private String fullName;
 	
 	public StudentDTO(Student student) {
 		this.student  = student;
@@ -37,7 +39,7 @@ public class StudentDTO {
 		this.street = student.getAddress().getStreet();
 		this.city = student.getAddress().getCity();
 
-		/* Moved to GraphQL Resolver
+		/* Moved to GraphQL Resolver (improve application performance)
 		if (student.getLearningSubjects() != null) {
 			learningSubjects = new ArrayList<>();
 			for (Subject subject: student.getLearningSubjects()) {
