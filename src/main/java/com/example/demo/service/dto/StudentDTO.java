@@ -1,10 +1,8 @@
 package com.example.demo.service.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.demo.domain.Student;
-import com.example.demo.domain.Subject;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,8 +23,12 @@ public class StudentDTO {
 	private String city;
 	
 	private List<SubjectDTO> learningSubjects;
+
+	// this is for internal use, do not put in schema
+	private Student student;
 	
 	public StudentDTO(Student student) {
+		this.student  = student;
 		this.id = student.getId();
 		this.firstName = student.getFirstName();
 		this.lastName = student.getLastName();
@@ -34,13 +36,15 @@ public class StudentDTO {
 		
 		this.street = student.getAddress().getStreet();
 		this.city = student.getAddress().getCity();
-		
+
+		/* Moved to GraphQL Resolver
 		if (student.getLearningSubjects() != null) {
 			learningSubjects = new ArrayList<>();
 			for (Subject subject: student.getLearningSubjects()) {
 				learningSubjects.add(new SubjectDTO(subject));
 			}
 		}
+		 */
 	}
 
 }
