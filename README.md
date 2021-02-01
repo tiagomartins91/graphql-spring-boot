@@ -92,4 +92,19 @@ Demo application with H2 database to test some GraphQL features.
             }
         }
     ```
-  
+  Query with filtered data:
+   - subjectNameFilter (Enum): All, Java, MySQL, MongoDB
+    ```
+      query{
+          student(id: 2){
+              id
+              firstName
+              lastName
+              learningSubjects(subjectNameFilter: Java) {
+                  subjectName
+                  marksObtained
+              }
+            fullName
+          }
+      }
+    ```

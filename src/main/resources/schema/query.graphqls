@@ -18,7 +18,7 @@ type StudentDTO {
     email: String
     street: String
     city: String
-    learningSubjects: [SubjetDTO]
+    learningSubjects(subjectNameFilter: SubjectNameFilter): [SubjetDTO]
     fullName: String
 }
 
@@ -26,5 +26,9 @@ type SubjetDTO {
     id: Long
     subjectName: String
     marksObtained: Float
+}
+
+enum SubjectNameFilter {
+    All, Java, MySQL, MongoDB
 }
 
