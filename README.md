@@ -32,6 +32,10 @@ Demo application with H2 database to test some GraphQL features.
     - REST has different http methods and separate endpoints to each API, while in GraphQL whe have
         Query and Mutation and there is only one endpoint;
     - GraphQL needs Schema file while REST does not need that.
+* Node and Edge in GraphQL:
+    - Node(Table - PK) ---->(Edge) Node(Table - PK; FK)
+
+
 
 #### Examples
 
