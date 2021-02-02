@@ -108,3 +108,34 @@ Demo application with H2 database to test some GraphQL features.
           }
       }
     ```
+    Query to create (Mutation - POST):
+  ```
+        mutation{
+          createStudent(createStudentDTO:{
+                firstName: "TM"
+                lastName: "91"
+                email: "tm91@test.com"
+                street: "test"
+                city: "test"
+                subjectsLearning: [
+                  { subjectName: "Java" marksObtained: 100.00 }
+                  { subjectName: "Ruby" marksObtained: 60.00 }
+                ]
+              }) {
+                id
+                firstName
+                lastName
+                email
+                street
+                city
+                learningSubjects(subjectNameFilter: All) {
+                  id
+                  subjectName
+                  marksObtained
+                }
+                fullName
+              }
+          }
+        }
+     ```
+  
