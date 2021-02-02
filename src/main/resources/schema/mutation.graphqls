@@ -1,0 +1,17 @@
+type Mutation {
+    createStudent(createStudentDTO: CreateStudentDTO): StudentDTO
+}
+
+input CreateStudentDTO {
+    firstName: String
+    lastName: String
+    email: String
+    street: String
+    city: String
+    subjectsLearning: [CreateSubjectDTO]
+}
+
+input CreateSubjectDTO {
+    subjectName: String
+    marksObtained: Float
+}

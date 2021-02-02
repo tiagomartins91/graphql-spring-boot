@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.example.demo.service.dto.CreateStudentDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +25,7 @@ import lombok.Setter;
 public class Student {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
 	
@@ -43,4 +44,10 @@ public class Student {
 	
 	@OneToMany(mappedBy = "student")
 	private List<Subject> learningSubjects;
+
+	public Student (CreateStudentDTO createStudentDTO) {
+		this.firstName = createStudentDTO.getFirstName();
+		this.lastName = createStudentDTO.getLastName();
+		this.email = createStudentDTO.getEmail();
+	}
 }
